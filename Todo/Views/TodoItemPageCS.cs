@@ -14,6 +14,9 @@ namespace Todo
 			var notesEntry = new Entry();
 			notesEntry.SetBinding(Entry.TextProperty, "Notes");
 
+            var timeEntry = new Entry();
+            timeEntry.SetBinding(Entry.TextProperty, "Time");
+
 			var doneSwitch = new Switch();
 			doneSwitch.SetBinding(Switch.IsToggledProperty, "Done");
 
@@ -56,6 +59,8 @@ namespace Todo
 					nameEntry,
 					new Label { Text = "Notes" },
 					notesEntry,
+                    new Label{ Text = "Time"},
+                    timeEntry,
 					new Label { Text = "Done" },
 					doneSwitch,
 					saveButton,

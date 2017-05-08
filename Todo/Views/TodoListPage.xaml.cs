@@ -38,5 +38,10 @@ namespace Todo
 				BindingContext = e.SelectedItem as TodoItem
 			});
 		}
-	}
+        public void countDownTime()
+        {
+            Button TimeButton = this.FindByName<Button>("TimeButton");
+            int TimeCount =Convert.ToInt32(TimeButton.Text);
+        }
+    }
 }

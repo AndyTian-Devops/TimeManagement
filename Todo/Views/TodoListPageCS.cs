@@ -38,7 +38,14 @@ namespace Todo
 					};
 					label.SetBinding(Label.TextProperty, "Name");
 
-					var tick = new Image
+                    var time = new Label
+                    {
+                        VerticalTextAlignment = TextAlignment.Center,
+                        HorizontalOptions = LayoutOptions.StartAndExpand
+                    };
+                    time.SetBinding(Label.TextProperty, "Time");
+
+                    var tick = new Image
 					{
 						Source = ImageSource.FromFile("check.png"),
 						HorizontalOptions = LayoutOptions.End
@@ -50,7 +57,7 @@ namespace Todo
 						Margin = new Thickness(20, 0, 0, 0),
 						Orientation = StackOrientation.Horizontal,
 						HorizontalOptions = LayoutOptions.FillAndExpand,
-						Children = { label, tick }
+						Children = { label,time,tick }
 					};
 
 					return new ViewCell { View = stackLayout };
@@ -78,5 +85,10 @@ namespace Todo
 			((App)App.Current).ResumeAtTodoId = -1;
 			listView.ItemsSource = await App.Database.GetItemsAsync();
 		}
-	}
+        public void countDownTime()
+        {
+            Button TimeButton = this.FindByName<Button>("TimeButton");
+            int TimeCount = Convert.ToInt32(TimeButton.Text);
+        }
+    }
 }
