@@ -14,6 +14,7 @@
 					<StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 						<Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
                         <Button Text="{Binding Time}" x:Name="TimeButton" />
+                        <Button x:Name="StartButton" Clicked="StartTimeCount" Text="Start" />
                         <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
 					</StackLayout>
 				</ViewCell>

@@ -38,10 +38,25 @@ namespace Todo
 				BindingContext = e.SelectedItem as TodoItem
 			});
 		}
-        public void countDownTime()
+       void StartTimeCount(object sender, EventArgs e)
         {
-            Button TimeButton = this.FindByName<Button>("TimeButton");
-            int TimeCount =Convert.ToInt32(TimeButton.Text);
+            //Get the start button
+            Button startbtn = (Button)sender;
+            startbtn.Text = "Pause";
+
+            //Get the parent node
+            var stLayout = startbtn.Parent;
+            //Find the time button
+            Button timebtn = stLayout.FindByName<Button>("TimeButton");
+
+            //Start Time Count Down
+            int IniTimeCount= Convert.ToInt32(timebtn.Text);
+            timebtn.Text = IniTimeCount.ToString();
+
+            
+
         }
+
     }
+
 }

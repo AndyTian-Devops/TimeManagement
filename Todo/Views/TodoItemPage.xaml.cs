@@ -13,9 +13,10 @@ namespace Todo
 		async void OnSaveClicked(object sender, EventArgs e)
 		{
 			var todoItem = (TodoItem)BindingContext;
-			await App.Database.SaveItemAsync(todoItem);
-			await Navigation.PopAsync();
-		}
+
+            await App.Database.SaveItemAsync(todoItem);
+            await Navigation.PopAsync();
+        }
 
 		async void OnDeleteClicked(object sender, EventArgs e)
 		{
@@ -34,5 +35,7 @@ namespace Todo
 			var todoItem = (TodoItem)BindingContext;
 			DependencyService.Get<ITextToSpeech>().Speak(todoItem.Name + " " + todoItem.Notes);
 		}
+
+
 	}
 }
