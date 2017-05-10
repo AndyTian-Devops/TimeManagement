@@ -51,12 +51,19 @@ namespace Todo
 
             //Start Time Count Down
             int IniTimeCount= Convert.ToInt32(timebtn.Text);
-            timebtn.Text = IniTimeCount.ToString();
-
             
+            Device.StartTimer(TimeSpan.FromSeconds(1), ()=> {
 
+                IniTimeCount--;
+                if (IniTimeCount < 0)
+                {
+                    startbtn.Text = "Start";
+                    return false;
+                }
+                timebtn.Text = IniTimeCount.ToString();
+                return true;
+            });
         }
-
     }
 
 }
