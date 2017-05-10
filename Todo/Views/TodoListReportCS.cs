@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using OxyPlot;
 using OxyPlot.Series;
+using OxyPlot.Axes;
 using OxyPlot.Xamarin.Forms;
 namespace Todo
 {
@@ -37,91 +38,37 @@ namespace Todo
             };
 
 
-        }
 
 
-        private  List<Todo> getDemodate()
-        {
-            Todo todo1 = new Todo();
-            todo1.type = "work";
-            todo1.name = "Run anlaysis";
-            todo1.time = 3;
-            todo1.date = DateTime.Now.AddDays(-3);
+            var plotView = new PlotView();
 
-            Todo todo2 = new Todo();
-            todo2.type = "work";
-            todo2.name = "Manual testing";
-            todo2.time = 5;
-            todo2.date = DateTime.Now.AddDays(-3);
+            // Set our view from the "main" layout resource
+            //SetContentView (Resource.Layout.Main);
+            var modelP1 = new PlotModel { Title = "work Time analyze by Name" };
+            var seriesP1 = new PieSeries { StrokeThickness = 2.0, InsideLabelPosition = 1.8, AngleSpan = 360, StartAngle = 0 };
 
-            Todo todo3 = new Todo();
-            todo3.type = "Life";
-            todo3.name = "cookie";
-            todo3.time = 2;
-            todo3.date = DateTime.Now.AddDays(-3);
+            seriesP1.Slices.Add(new PieSlice("Manual Tesitng", 10) { IsExploded = false, Fill = OxyColors.PaleVioletRed });
+            seriesP1.Slices.Add(new PieSlice("Automation Testing", 26) { IsExploded = true });
+            seriesP1.Slices.Add(new PieSlice("Bug handing", 5) { IsExploded = true });
+            seriesP1.Slices.Add(new PieSlice("Communicate", 6) { IsExploded = true });
+            seriesP1.Slices.Add(new PieSlice("Imprvoement", 8) { IsExploded = true });
+
+            modelP1.Series.Add(seriesP1);
+            plotView.Model = modelP1;
+        
+            this.AddContentView(plotView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
 
 
-            List<Todo> todoList = new List<Todo>();
-            todoList.Add(todo1);
-            todoList.Add(todo2);
-            todoList.Add(todo3);
-
-            return todoList;
 
         }
 
-        class Todo
-        {
-           public DateTime date { get; set; }
-           public string type { get; set; }
-            public string name { get; set; }
-            public int time { get; set; }
-        }
-       
+
+
+
 
 
 
     }
 
 
-    public class MainViewModel
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MainViewModel" /> class.
-        /// </summary>
-        public MainViewModel()
-        {
-            // Create the plot model
-            var tmp = new PlotModel { Title = "Simple example", Subtitle = "using OxyPlot" };
-
-            // Create two line series (markers are hidden by default)
-            var series1 = new LineSeries { Title = "Series 1", MarkerType = MarkerType.Circle };
-            series1.Points.Add(new DataPoint(0, 0));
-            series1.Points.Add(new DataPoint(10, 18));
-            series1.Points.Add(new DataPoint(20, 12));
-            series1.Points.Add(new DataPoint(30, 8));
-            series1.Points.Add(new DataPoint(40, 15));
-
-            var series2 = new LineSeries { Title = "Series 2", MarkerType = MarkerType.Square };
-            series2.Points.Add(new DataPoint(0, 4));
-            series2.Points.Add(new DataPoint(10, 12));
-            series2.Points.Add(new DataPoint(20, 16));
-            series2.Points.Add(new DataPoint(30, 25));
-            series2.Points.Add(new DataPoint(40, 5));
-
-            // Add the series to the plot model
-            tmp.Series.Add(series1);
-            tmp.Series.Add(series2);
-
-            // Axes are created automatically if they are not defined
-
-            // Set the Model property, the INotifyPropertyChanged event will make the WPF Plot control update its content
-            this.Model = tmp;
-        }
-
-        /// <summary>
-        /// Gets the plot model.
-        /// </summary>
-        public PlotModel Model { get; private set; }
-    }
 }
