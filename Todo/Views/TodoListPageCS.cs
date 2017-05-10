@@ -26,7 +26,22 @@ namespace Todo
 			};
 			ToolbarItems.Add(toolbarItem);
 
-			listView = new ListView
+            var toolbarGetReport = new ToolbarItem
+            {
+                Text = "+",
+                Icon = Device.OnPlatform(null, "plus.png", "plus.png")
+            };
+            toolbarGetReport.Clicked += async (sender, e) =>
+            {
+                await Navigation.PushAsync(new TodoItemPageCS
+                {
+                    BindingContext = new TodoItem()
+                });
+            };
+            ToolbarItems.Add(toolbarGetReport);
+
+
+            listView = new ListView
 			{
 				Margin = new Thickness(20),
 				ItemTemplate = new DataTemplate(() =>
@@ -68,6 +83,10 @@ namespace Todo
 			};
 
 			Content = listView;
+
+
+
+
 		}
 
 		protected override async void OnAppearing()

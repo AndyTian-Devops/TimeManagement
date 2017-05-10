@@ -19,6 +19,7 @@ namespace Todo.Views
         public TodoReport()
         {
             InitializeComponent();
+           
         }
         async void OnItemAdded(object sender, EventArgs e)
         {
