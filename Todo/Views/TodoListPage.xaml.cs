@@ -59,7 +59,7 @@ namespace Todo
             {
                 //Stop count down time and save the time 
                 startbtn.Text = "Start";
-
+                //App.Database.GetItemAsync(0);
             }
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {

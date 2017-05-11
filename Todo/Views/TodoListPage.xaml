@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Todo.TodoListPage" Title="Todo">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Todo.TodoListPage" >
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Text="+" Clicked="OnItemAdded">
 			<ToolbarItem.Icon>
@@ -14,7 +14,7 @@
 					<StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 						<Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
                         <Button Text="{Binding Time}" x:Name="TimeButton" />
-                        <Button x:Name="StartButton" Clicked="StartTimeCount" Text="Start" />
+                        <Button x:Name="StartButton" Clicked="StartTimeCount" Text="Start" x:Class=""/>
                         <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Done}" />
 					</StackLayout>
 				</ViewCell>
